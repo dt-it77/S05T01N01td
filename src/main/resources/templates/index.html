@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>Sucursal Management</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Sucursals Management</h1>
+
+        <a th:href="@{/sucursal/add}" class="btn btn-primary btn-sm mb-3"> Afegir sucursal </a>
+
+        <table border="1" class="table table-striped table-responsive-md">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Pais</th>
+                    <th>Tipus</th>
+                    <th> Accions </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="_sucursal:${_allSucursals}">
+                    <td th:text="${_sucursal.pk_SucursalID}"></td>
+                    <td th:text="${_sucursal.nomSucursal}"></td>
+                    <td th:text="${_sucursal.paisSucursal}"></td>
+                    <td th:text="${_sucursal.tipusSucursal}"></td>
+                    <td> <a th:href="@{/sucursal/update/{id}(id=${_sucursal.pk_SucursalID})}" class="btn btn-primary">Editar</a>
+                        <a th:href="@{/sucursal/delete/{id}(id=${_sucursal.pk_SucursalID})}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
